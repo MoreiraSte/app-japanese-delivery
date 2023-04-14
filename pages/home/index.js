@@ -1,11 +1,15 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import styles from '../home/style'
+import styles from './style.js'
+
+import client from '../client/login.js'
 
 
 export default function Home({navigation}){
     return(
+        
         <View style={styles.container}>
+            
             <View>
             <Text style={styles.texto1}>
                 Japanese Delivery
@@ -13,7 +17,7 @@ export default function Home({navigation}){
         </View>
         <View style={styles.btn}>
             <View >
-               <button style={styles.button}>Admin</button>
+               <button onClick={client} style={styles.button}>Client</button>
             </View>
             <View>
                <button style={styles.button}>Admin</button>

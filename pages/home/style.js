@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
       fontSize: 20,
       borderRadius:20,
       borderColor:'black'
+      
     }
 })
 
