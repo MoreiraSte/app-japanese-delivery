@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity,Button } from 'react-native';
 import styles from './style.js'
 
 import client from '../client/login.js'
@@ -17,14 +17,32 @@ export default function Home({navigation}){
         </View>
         <View style={styles.btn}>
             <View >
-               <button onClick={client} style={styles.button}>Client</button>
+            <TouchableOpacity 
+                    title='Login'
+                    onPress={()=> navigation.navigate('Login')}
+                    style={styles.button}
+                >
+                    <Text >Login</Text>
+                </TouchableOpacity>
             </View>
             <View>
-               <button style={styles.button}>Admin</button>
-            </View>
+            <TouchableOpacity 
+                    title='Login'
+                    onPress={()=> navigation.navigate('Login')}
+                    style={styles.button}
+                >
+                    <Text style={styles.txtButton} >Login</Text>
+                </TouchableOpacity>  
+             </View>
             <View >
-               <button style={styles.button}>Admin</button>
-            </View>
+            <TouchableOpacity 
+                    title='Login'
+                    onPress={()=> navigation.navigate('Login')}
+                    style={styles.button}
+                >
+                    <Text >Login</Text>
+                </TouchableOpacity>
+                        </View>
             </View>           
         </View>
     )
