@@ -5,21 +5,14 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor:'#FFA696',
         alignItems: 'center',
-        justifyContent: 'space-around',
-       
+        justifyContent: 'space-around'
 
     },
     texto1:{
         fontSize:40,
         fontFamily:'Times New Roman'
     },
-    btn: {
-        flex:0.6,
-        
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        
-    },
+   
     
     txtButton: {
         fontFamily:'Times New Roman',
@@ -36,7 +29,18 @@ const styles = StyleSheet.create({
       borderColor:'black',
       backgroundColor:'#B31E23',
       
-    }
+    },
+    input:{
+        width: '70vw',
+        height:'7vh',
+        fontSize: 20,
+        borderRadius:5,
+        borderColor:'black',
+        textAlign:'center',
+      },
+
+   
+
 })
 
 export default styles

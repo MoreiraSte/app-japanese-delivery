@@ -5,8 +5,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor:'#FFA696',
         alignItems: 'center',
-        justifyContent: 'space-around',
-       
+        justifyContent: 'space-around'
 
     },
     texto1:{
@@ -14,10 +13,11 @@ const styles = StyleSheet.create({
         fontFamily:'Times New Roman'
     },
     btn: {
-        flex:0.6,
-        
+        flex:0.5,
         alignItems: 'center',
         justifyContent: 'space-around',
+        
+        
         
     },
     
@@ -36,7 +36,10 @@ const styles = StyleSheet.create({
       borderColor:'black',
       backgroundColor:'#B31E23',
       
-    }
+    },
+
+   
+
 })
 
 export default styles

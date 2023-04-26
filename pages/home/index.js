@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity,Button } from 'react-native';
 import styles from './style.js'
 
-import client from '../client/login.js'
+import admin from '../admin/login.js'
 
 
 export default function Home({navigation}){
@@ -22,7 +22,7 @@ export default function Home({navigation}){
                     onPress={()=> navigation.navigate('Login')}
                     style={styles.button}
                 >
-                    <Text >Login</Text>
+                    <Text style={styles.txtButton}>Admin</Text>
                 </TouchableOpacity>
             </View>
             <View>
@@ -31,7 +31,7 @@ export default function Home({navigation}){
                     onPress={()=> navigation.navigate('Login')}
                     style={styles.button}
                 >
-                    <Text style={styles.txtButton} >Login</Text>
+                    <Text style={styles.txtButton} >Client</Text>
                 </TouchableOpacity>  
              </View>
             <View >
@@ -40,7 +40,7 @@ export default function Home({navigation}){
                     onPress={()=> navigation.navigate('Login')}
                     style={styles.button}
                 >
-                    <Text >Login</Text>
+                    <Text style={styles.txtButton}>Motoboy</Text>
                 </TouchableOpacity>
                         </View>
             </View>           
