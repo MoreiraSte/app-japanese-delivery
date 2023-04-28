@@ -1,9 +1,11 @@
-import styles from '../admin/style'
+import styles from '../client/styleRegister'
 import React from 'react';
-import { View, Text, TouchableOpacity,Button,TextInput ,Link} from 'react-native';
+import { View, Text, TouchableOpacity,Button,TextInput} from 'react-native';
+import { Link } from "react-router-native";
+
 import image_logo from '../images/icon_logo.png'
 
-export default function Login({navigation}) {
+export default function ClientRegister({navigation}) {
     return (
         <>
       <View style={styles.container}>
@@ -19,7 +21,7 @@ export default function Login({navigation}) {
                     style={styles.input}
                     // onChangeText={onChangeNumber}
                     // value={number}
-                    placeholder="User Admin"
+                    placeholder="User"
                     keyboardType="text"
                   />
             </View>
@@ -38,9 +40,11 @@ export default function Login({navigation}) {
                     onPress={()=> navigation.navigate('Choice')}
                     style={styles.button}
                 >
-                    <Text style={styles.txtButton}>Sign In</Text>
+                    <Text style={styles.txtButton}>Sign Up</Text>
                 </TouchableOpacity>
-              {/* <a href='#' style={styles.link}>Sign UP</a> */}
+                <Link to="/Client">
+                    <Text>Visit your profile</Text>
+                </Link>
             </View>
             </View>           
       </View>

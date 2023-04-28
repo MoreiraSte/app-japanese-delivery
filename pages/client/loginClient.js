@@ -1,9 +1,9 @@
-import styles from '../admin/style'
+import styles from '../client/styleLogin'
 import React from 'react';
 import { View, Text, TouchableOpacity,Button,TextInput ,Link} from 'react-native';
 import image_logo from '../images/icon_logo.png'
 
-export default function Login({navigation}) {
+export default function ClientLogin({navigation}) {
     return (
         <>
       <View style={styles.container}>
@@ -19,7 +19,7 @@ export default function Login({navigation}) {
                     style={styles.input}
                     // onChangeText={onChangeNumber}
                     // value={number}
-                    placeholder="User Admin"
+                    placeholder="User"
                     keyboardType="text"
                   />
             </View>
@@ -34,13 +34,13 @@ export default function Login({navigation}) {
              </View>
             <View >
             <TouchableOpacity 
-                    title='Choice'
-                    onPress={()=> navigation.navigate('Choice')}
+                    title='ClientRegister'
+                    onPress={()=> navigation.navigate('ClientRegister')}
                     style={styles.button}
                 >
                     <Text style={styles.txtButton}>Sign In</Text>
                 </TouchableOpacity>
-              {/* <a href='#' style={styles.link}>Sign UP</a> */}
+              <a href='#' style={styles.link}>Sign UP</a>
             </View>
             </View>           
       </View>

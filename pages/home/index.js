@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity,Button } from 'react-native';
 import styles from './style.js'
 
 import admin from '../admin/login.js'
+import image_logo from '../images/icon_logo.png'
 
 
 export default function Home({navigation}){
@@ -14,6 +15,8 @@ export default function Home({navigation}){
             <Text style={styles.texto1}>
                 Japanese Delivery
             </Text>
+
+            <img style={styles.img_logo} alt='logo' src={image_logo}/>
         </View>
         <View style={styles.btn}>
             <View >
@@ -27,8 +30,8 @@ export default function Home({navigation}){
             </View>
             <View>
             <TouchableOpacity 
-                    title='Login'
-                    onPress={()=> navigation.navigate('Login')}
+                    title='Client'
+                    onPress={()=> navigation.navigate('Client')}
                     style={styles.button}
                 >
                     <Text style={styles.txtButton} >Client</Text>

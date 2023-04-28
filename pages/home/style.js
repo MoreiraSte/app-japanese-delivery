@@ -36,6 +36,10 @@ const styles = StyleSheet.create({
       borderColor:'black',
       backgroundColor:'#B31E23',
       
+    },
+    img_logo:{
+        width:'40vw',
+        marginLeft:'20%'
     }
 })
 

@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         fontFamily:'Times New Roman'
     },
     btn: {
-        flex:0.5,
+        flex:0.8,
         alignItems: 'center',
         justifyContent: 'space-around',
         
@@ -37,6 +37,10 @@ const styles = StyleSheet.create({
       backgroundColor:'#B31E23',
       
     },
+    img_logo:{
+        width:'40vw',
+        marginLeft:'20%'
+    }
 
    
 
