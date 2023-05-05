@@ -54,6 +54,17 @@ const styles = StyleSheet.create({
       img_logo:{
         width:'40vw',
         marginLeft:'20%'
+    },
+    contentAlert:{
+        marginTop:20,
+        flexDirection:'row',
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    warningAlert:{
+        paddingLeft:10,
+        color:"#bdbdbd",
+        fontSize:16
     }
    
 
