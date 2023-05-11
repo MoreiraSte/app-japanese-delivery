@@ -6,16 +6,13 @@ import {MaterialCommunityIcons} from "@expo/vector-icons"
 import { auth,logInWithEmailAndPassword,signOut  } from '../config/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigation } from '@react-navigation/native';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 
 export default function Login({navigation}) {
   // const database = firebase.firestore();
 
-//   const auth = getAuth();
-// signOut(auth).then(() => {
-//   // Sign-out successful.
-// }).catch((error) => {
-//   // An error happened.
-// });
+
 
   const[email,setEmail] = useState('')
   const[password,setPassword] = useState('')
@@ -34,6 +31,8 @@ export default function Login({navigation}) {
         console.log(user)
         if (user.uid === '2UVpAWuuCEPKTqBstxcdHlRwSEz1'){
           navigation.navigate('Choice')
+          Notify.success('Você entrou na conta de Admin');
+
         }
         else{
           navigation.navigate('Home')

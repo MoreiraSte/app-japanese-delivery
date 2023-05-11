@@ -19,7 +19,7 @@ export default function App() {
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={Home} options={{headerShown:false}}/>
         <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Choice" component={Choice} />
+        <Stack.Screen name="Choice" component={Choice} options={{headerShown:false}}/>
         <Stack.Screen name="Create" component={Create} />
         <Stack.Screen name="Client" component={Client} />
         <Stack.Screen name="ClientRegister" component={ClientRegister} />

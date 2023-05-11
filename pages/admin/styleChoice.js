@@ -40,6 +40,12 @@ const styles = StyleSheet.create({
     img_logo:{
         width:'40vw',
         marginLeft:'20%'
+    },
+    buttonOut:{
+        position: 'absolute',
+        top: 0,
+        marginLeft:'40vw',
+        width:20
     }
 
    
