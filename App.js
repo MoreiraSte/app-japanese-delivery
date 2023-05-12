@@ -10,6 +10,7 @@ import Choice from './pages/admin/choice'
 import Create from './pages/admin/create'
 import Client from './pages/client/loginClient'
 import ClientRegister from './pages/client/registerClient'
+import teste from './pages/client/index copy'
 
 const Stack = createNativeStackNavigator();
 
@@ -22,7 +23,8 @@ export default function App() {
         <Stack.Screen name="Choice" component={Choice} options={{headerShown:false}}/>
         <Stack.Screen name="Create" component={Create} />
         <Stack.Screen name="Client" component={Client} />
-        <Stack.Screen name="ClientRegister" component={ClientRegister} />
+        <Stack.Screen name="ClientRegister" component={ClientRegister} options={{headerShown:false}} />
+        <Stack.Screen name="teste" component={teste}  />
       </Stack.Navigator>
     </NavigationContainer>
   );

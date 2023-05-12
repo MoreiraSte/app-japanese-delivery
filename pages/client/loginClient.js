@@ -35,12 +35,22 @@ export default function ClientLogin({navigation}) {
             <View >
             <TouchableOpacity 
                     title='ClientRegister'
-                    onPress={()=> navigation.navigate('ClientRegister')}
+                    // onPress={}
                     style={styles.button}
                 >
                     <Text style={styles.txtButton}>Sign In</Text>
                 </TouchableOpacity>
-              <a href='#' style={styles.link}>Sign UP</a>
+
+            </View>
+            <View style={styles.divbtn}>
+              <TouchableOpacity 
+                      title='ClientRegister'
+                      onPress={()=> navigation.navigate('ClientRegister')}
+                      style={styles.buttonSignUp}
+                  >
+                      <Text style={styles.txtButton}>Sign Up</Text>
+                  </TouchableOpacity>
+              
             </View>
             </View>           
       </View>

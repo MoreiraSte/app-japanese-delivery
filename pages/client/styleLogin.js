@@ -54,6 +54,22 @@ const styles = StyleSheet.create({
       img_logo:{
         width:'40vw',
         marginLeft:'20%'
+    },
+    buttonSignUp:{
+        width: '40vw',
+        height:'5vh',
+        fontSize: 15,
+        borderRadius:20,
+        borderColor:'white',
+        backgroundColor:'black',
+        color:'white',
+       
+       
+    },
+    divbtn:{
+        marginTop:'5px',
+        alignItems: 'center',
+
     }
    
 
