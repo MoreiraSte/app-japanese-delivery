@@ -10,7 +10,7 @@ import Choice from './pages/admin/choice'
 import Create from './pages/admin/create'
 import Client from './pages/client/loginClient'
 import ClientRegister from './pages/client/registerClient'
-import teste from './pages/client/index copy'
+import teste from './pages/client/index'
 
 const Stack = createNativeStackNavigator();
 

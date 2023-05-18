@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity,Button } from 'react-native';
-import styles from '../home/style.js'
+import styles from '../client/style'
 
 import image_logo from '../images/icon_logo.png'
 
