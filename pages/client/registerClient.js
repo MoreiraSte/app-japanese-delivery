@@ -1,23 +1,39 @@
 import styles from '../client/styleRegister'
-import React from 'react';
+import React,{useState}from 'react';
 import { View, Text, TouchableOpacity,Button,TextInput} from 'react-native';
 import image_logo from '../images/icon_logo.png'
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+// import auth from '@react-native-firebase/auth'
+import {registerWithEmailAndPassword } from '../config/firebase';
+
+
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 
 export default function ClientRegister({navigation}) {
-  // const auth = getAuth();
-  // createUserWithEmailAndPassword(auth, email, password)
-  //   .then((userCredential) => {
-      
-  //     const user = userCredential.user;
-   
-  //   })
-  //   .catch((error) => {
-  //     const errorCode = error.code;
-  //     const errorMessage = error.message;
-     
-  //   });
+  const [email,setEmail] = useState('');
+  const [password,setPassword] = useState('');
+
+  function signUp(){
+    registerWithEmailAndPassword(email,password)
+    .then(userCredential => {
+      console.log('oi')
+      Notify.success('User'+userCredential+'criado');
+    })
+    .catch(error => {
+      console.log(error)
+
+      if(error.code === 'auth/email-already-in-use'){
+        console.log('email já existe')
+        Notify.failure('email já existe');
+      }
+      if(error.code === 'auth/invalid-email'){
+        console.log('email inválido')
+        Notify.failure('email inválido');
+      }
+    });
+  }
+
+ 
     return (
         <>
       <View  style={styles.container}>
@@ -31,8 +47,8 @@ export default function ClientRegister({navigation}) {
             <View >
                   <TextInput
                     style={styles.input}
-                    // onChangeText={onChangeNumber}
-                    // value={number}
+                    onChangeText={setEmail}
+                    value={email}
                     placeholder="User"
                     keyboardType="text"
                   />
@@ -40,8 +56,8 @@ export default function ClientRegister({navigation}) {
             <View>
                   <TextInput
                     style={styles.input}
-                    // onChangeText={onChangeNumber}
-                    // value={number}
+                    onChangeText={setPassword}
+                    value={password}
                     placeholder="Password"
                     keyboardType="text"
                   /> 
@@ -49,7 +65,7 @@ export default function ClientRegister({navigation}) {
             <View >
             <TouchableOpacity 
                     title='Choice'
-                    // onPress={}
+                    onPress={signUp}
                     style={styles.button}
                 >
                     <Text style={styles.txtButton}>Sign Up</Text>

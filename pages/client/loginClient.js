@@ -1,9 +1,30 @@
 import styles from '../client/styleLogin'
-import React from 'react';
+import React,{useState} from 'react';
 import { View, Text, TouchableOpacity,Button,TextInput ,Link} from 'react-native';
 import image_logo from '../images/icon_logo.png'
+// import auth from '@react-native-firebase/auth'
+import {logInWithEmailAndPassword} from '../config/firebase';
+
+
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 
 export default function ClientLogin({navigation}) {
+
+  const [email,setEmail] = useState('');
+  const [password,setPassword] = useState('');
+
+  function signIn(){
+    logInWithEmailAndPassword(email,password)
+    .then(()=> 
+      Notify.success('Usuário logado!'),
+      navigation.navigate('teste')
+
+    )
+    .catch(error => console.log(error));
+  }
+
+  
     return (
         <>
       <View style={styles.container}>
@@ -17,8 +38,8 @@ export default function ClientLogin({navigation}) {
             <View >
                   <TextInput
                     style={styles.input}
-                    // onChangeText={onChangeNumber}
-                    // value={number}
+                    onChangeText={setEmail}
+                    value={email}
                     placeholder="User"
                     keyboardType="text"
                   />
@@ -26,8 +47,8 @@ export default function ClientLogin({navigation}) {
             <View>
                   <TextInput
                     style={styles.input}
-                    // onChangeText={onChangeNumber}
-                    // value={number}
+                    onChangeText={setPassword}
+                    value={password}
                     placeholder="Password"
                     keyboardType="text"
                   /> 
@@ -35,7 +56,7 @@ export default function ClientLogin({navigation}) {
             <View >
             <TouchableOpacity 
                     title='ClientRegister'
-                    // onPress={}
+                    onPress={signIn}
                     style={styles.button}
                 >
                     <Text style={styles.txtButton}>Sign In</Text>
