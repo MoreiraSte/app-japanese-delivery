@@ -16,10 +16,14 @@ export default function ClientLogin({navigation}) {
 
   function signIn(){
     logInWithEmailAndPassword(email,password)
-    .then(()=> 
-      Notify.success('Usuário logado!'),
-      navigation.navigate('teste')
+    .then((res)=> {
+      console.log(res)
+      if (res != false){
+        Notify.success('Usuário logado!'),
+        navigation.navigate('teste')
+      }
 
+      }
     )
     .catch(error => console.log(error));
   }
@@ -30,9 +34,9 @@ export default function ClientLogin({navigation}) {
       <View style={styles.container}>
       <View>
             <Text style={styles.texto1}>
-                Japanese Delivery
+                Login Client
             </Text>
-            <img style={styles.img_logo} alt='logo' src={image_logo}/>
+            
         </View>
         <View style={styles.btn}>
             <View >

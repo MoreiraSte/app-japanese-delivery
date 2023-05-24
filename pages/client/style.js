@@ -13,39 +13,24 @@ const styles = StyleSheet.create({
         fontSize:40,
         fontFamily:'Times New Roman'
     },
-    btn: {
-        flex:0.6,
-        
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        
-    },
     
-    txtButton: {
-        fontFamily:'Times New Roman',
-        fontSize: 25,
-        color: '#DDD',
-        textAlign:'center',
-        marginTop:'15px'
-    },
-    button:{
-      width: '50vw',
-      height:'7vh',
-      fontSize: 20,
-      borderRadius:20,
-      borderColor:'black',
-      backgroundColor:'#B31E23',
-      
-    },
-    img_logo:{
-        width:'40vw',
-        marginLeft:'20%'
-    },
     buttonOut:{
+        width:40
+    },
+
+    viewButton:{
+        marginLeft:'70vw',
         position: 'absolute',
         top: 0,
-        marginLeft:'40vw',
-        width:20
+        marginTop:'20px'
+    },
+    scroll:{
+        backgroundColor:'#B31E23',
+        width:'90vw',
+        height:'80vh',
+        marginTop:'15px'
+
+        
     }
 })
 

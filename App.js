@@ -24,7 +24,7 @@ export default function App() {
         <Stack.Screen name="Create" component={Create} />
         <Stack.Screen name="Client" component={Client} />
         <Stack.Screen name="ClientRegister" component={ClientRegister} options={{headerShown:false}} />
-        <Stack.Screen name="teste" component={teste}  />
+        <Stack.Screen name="teste" component={teste}  options={{headerShown:false}}  />
       </Stack.Navigator>
     </NavigationContainer>
   );

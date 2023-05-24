@@ -39,9 +39,9 @@ export default function ClientRegister({navigation}) {
       <View  style={styles.container}>
       <View>
             <Text style={styles.texto1}>
-                Japanese Delivery
+                Register Client
             </Text>
-            <img style={styles.img_logo} alt='logo' src={image_logo}/>
+            
         </View>
         <View style={styles.btn}>
             <View >

@@ -14,7 +14,7 @@ export default function Home({navigation}){
 
     const LogOut = () => {
         signOut(auth).then(() => {
-            navigation.navigate('Client')
+            navigation.navigate('Home')
             Notify.failure('Você saiu da conta');
 
             
@@ -25,7 +25,7 @@ export default function Home({navigation}){
     return(
         
         <View style={styles.container}>
-            <View>
+            <View  style={styles.viewButton} >
         <TouchableOpacity 
                     title='Logout'
                     onPress={LogOut}
@@ -35,14 +35,23 @@ export default function Home({navigation}){
                 </TouchableOpacity>
         </View>
             
-            <View>
-            <Text style={styles.texto1}>
-                Japanese Delivery
-            </Text>
-
-            <img style={styles.img_logo} alt='logo' src={image_logo}/>
+        <View style={styles.scroll}>
+            <View style={styles.card}>
+                <View style={styles.viewTexto}>
+                    <Text style={styles.texto1}>{/* TEXTO DO ITEM */}</Text>
+                </View>
+                <View style={styles.viewItem}>  
+                    {/* IMAGEM DO ITEM*/}
+                </View>
+                <View style={styles.viewPreco}>
+                    {/* PREÇO DO ITEM */}
+                </View>
+                <View style={styles.viewIcon}>
+                {/* ICON CARRINHO */}
+                </View>
+            </View>
         </View>
-        <Text>TESTE</Text>
+        
         </View>
     )
 }
