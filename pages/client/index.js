@@ -1,16 +1,17 @@
-import React from 'react';
-import { View, Text, TouchableOpacity,Button } from 'react-native';
+import React,{useState,useEffect} from 'react';
+import { View, Text, TouchableOpacity,Button, Image } from 'react-native';
 import styles from '../client/style'
 import { getAuth, signOut } from "firebase/auth";
+import { FontAwesome5 } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 
-
-
-import image_logo from '../images/icon_logo.png'
-
+import { collection, getDocs ,query, orderBy, onSnapshot } from 'firebase/firestore'
+import {db} from '../config/firebase';
+import { async } from '@firebase/util';
 
 export default function Home({navigation}){
     const auth = getAuth();
+    const [data, setData] = useState([]);
 
     const LogOut = () => {
         signOut(auth).then(() => {
@@ -22,6 +23,20 @@ export default function Home({navigation}){
             console.log('ERRO AO SAIR')
         });
     }
+
+    useEffect(async()=>{
+        const querySnapshot = await getDocs(collection(db,'item'));
+        const list=[]
+        querySnapshot.forEach((doc)=>{
+            list.push({...doc.data(),id:doc.data().id, name: doc.data().name, image: doc.data().image})
+        });
+
+        setData(list)
+    },[])
+
+    const repositorio = 'https://firebasestorage.googleapis.com/v0/b/japanesedelivery-f850b.appspot.com/o/images%2FS1_'
+    const media = '?alt=media'
+    
     return(
         
         <View style={styles.container}>
@@ -31,27 +46,38 @@ export default function Home({navigation}){
                     onPress={LogOut}
                     style={styles.buttonOut}
                 >
-                    <AntDesign name="logout" size={24} color="black" />
+                    <AntDesign name="logout" size={25} color="black" />
                 </TouchableOpacity>
         </View>
             
         <View style={styles.scroll}>
-            <View style={styles.card}>
-                <View style={styles.viewTexto}>
-                    <Text style={styles.texto1}>{/* TEXTO DO ITEM */}</Text>
-                </View>
-                <View style={styles.viewItem}>  
-                    {/* IMAGEM DO ITEM*/}
-                </View>
-                <View style={styles.viewPreco}>
-                    {/* PREÇO DO ITEM */}
-                </View>
-                <View style={styles.viewIcon}>
-                {/* ICON CARRINHO */}
-                </View>
-            </View>
+            {data.map((item) => (
+               <View style={styles.card}>
+               
+               <View style={styles.viewItem}>  
+                    <Image style={styles.foto} source={repositorio + item.image + media} ></Image>
+               </View>
+               <View style={styles.viewDetails}>
+
+                   <View>
+                       <Text>{item.name}</Text>
+                   </View>
+                   <View>
+                       <Text>R$ {item.price}</Text>
+                      
+                   </View>
+                   
+               </View>
+               <View style={styles.viewIcon}>
+                   <TouchableOpacity>
+                       <FontAwesome5 name="shopping-cart" size={24} color="black" />
+                   </TouchableOpacity>
+               </View>
+           </View>
+            ))}
+            
         </View>
-        
+            
         </View>
     )
 }

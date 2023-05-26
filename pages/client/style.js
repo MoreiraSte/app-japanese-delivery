@@ -31,7 +31,27 @@ const styles = StyleSheet.create({
         marginTop:'15px'
 
         
+    },
+    card:{
+        height:'20%',
+        width:'90%',
+        backgroundColor:'white',
+        borderRadius:20,
+        marginTop:'15px',
+        marginLeft:'20px',
+        display:'flex',
+        justifyContent:'space-around',
+        flexDirection: 'row',
+        alignItems:'center'
+
+    },
+    foto:{
+        justifyContent:'center',
+        borderRadius:10,
+        width:70,
+        height:70,
     }
+   
 })
 
 export default styles

@@ -32,7 +32,9 @@ const db = getFirestore(app);
 
 const logInWithEmailAndPassword = async (email, password) => {
   try {
-    await signInWithEmailAndPassword(auth, email, password);
+    await signInWithEmailAndPassword(auth, email, password).then((res) => {
+      console.log(res)
+    });
   } catch (err) {
 
     console.error(err);
