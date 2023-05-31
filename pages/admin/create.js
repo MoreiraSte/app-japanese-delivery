@@ -44,7 +44,7 @@ export default function Create({navigation}) {
 
     const storageRef = ref(
       storage,
-      `images/${name.replace(/ +/g, '') + '_' + image.name}`
+      `images/${image.name}`
     )
 
     const uploadTask = uploadBytesResumable(storageRef, file)

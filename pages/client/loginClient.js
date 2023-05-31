@@ -20,7 +20,7 @@ export default function ClientLogin({navigation}) {
       console.log(res)
       if (res != false){
         Notify.success('Usuário logado!'),
-        navigation.navigate('teste')
+        navigation.navigate('Products')
       }
 
       }
@@ -55,6 +55,7 @@ export default function ClientLogin({navigation}) {
                     value={password}
                     placeholder="Password"
                     keyboardType="text"
+                    type='text'
                   /> 
              </View>
             <View >

@@ -12,11 +12,11 @@ import { async } from '@firebase/util';
 export default function Home({navigation}){
     const auth = getAuth();
     const [data, setData] = useState([]);
-
+    
     const LogOut = () => {
         signOut(auth).then(() => {
             navigation.navigate('Home')
-            Notify.failure('Você saiu da conta');
+           
 
             
         }).catch((error) => {
@@ -24,17 +24,20 @@ export default function Home({navigation}){
         });
     }
 
-    useEffect(async()=>{
-        const querySnapshot = await getDocs(collection(db,'item'));
-        const list=[]
-        querySnapshot.forEach((doc)=>{
-            list.push({...doc.data(),id:doc.data().id, name: doc.data().name, image: doc.data().image})
-        });
-
-        setData(list)
+    useEffect(() => {
+        async function carregar() {
+            const querySnapshot = await getDocs(collection(db,'item'));
+            let list=[]
+            querySnapshot.forEach((doc)=>{
+                list.push({...doc.data(),id:doc.data().id, name: doc.data().name, image: doc.data().image})
+            });
+    
+            setData(list)
+        }
+        carregar();
     },[])
 
-    const repositorio = 'https://firebasestorage.googleapis.com/v0/b/japanesedelivery-f850b.appspot.com/o/images%2FS1_'
+    const repositorio = 'https://firebasestorage.googleapis.com/v0/b/japanesedelivery-f850b.appspot.com/o/images%2F'
     const media = '?alt=media'
     
     return(

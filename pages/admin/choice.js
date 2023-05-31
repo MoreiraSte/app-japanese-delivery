@@ -55,7 +55,7 @@ export default function Create({navigation}) {
 
             <TouchableOpacity 
                     title='Remove'
-                    onPress={()=> navigation.navigate('Create')}
+                    onPress={()=> navigation.navigate('Remove')}
                     style={styles.button}
                 >
                     <Text style={styles.txtButton}>Remover Item</Text>
