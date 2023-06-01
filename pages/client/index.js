@@ -5,13 +5,17 @@ import { getAuth, signOut } from "firebase/auth";
 import { FontAwesome5 } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 
-import { collection, getDocs ,query, orderBy, onSnapshot } from 'firebase/firestore'
-import {db} from '../config/firebase';
+import { collection, getDocs,addDoc } from 'firebase/firestore'
+import {db,storage} from '../config/firebase';
 import { async } from '@firebase/util';
 
-export default function Home({navigation}){
+export default function Products({navigation}){
     const auth = getAuth();
     const [data, setData] = useState([]);
+
+    const [name, setName] = useState("")
+    const [price, setPrice] = useState()
+    const [image, setImage] = useState('')
     
     const LogOut = () => {
         signOut(auth).then(() => {
@@ -39,12 +43,34 @@ export default function Home({navigation}){
 
     const repositorio = 'https://firebasestorage.googleapis.com/v0/b/japanesedelivery-f850b.appspot.com/o/images%2F'
     const media = '?alt=media'
+
+    async function adicionar() {
+        await addDoc(collection(db, 'cart'), {
+          name: name,
+          price: price,
+          image: image.name
+        })
+    
+        setName('')
+        setPrice('')
+        Notify.success('Item adicionado no carrinho');
+    
+        
+      }
     
     return(
         
         <View style={styles.container}>
             <View  style={styles.viewButton} >
-        <TouchableOpacity 
+        
+            <TouchableOpacity
+                title='cartPage'
+                style={styles.buttonOut}
+                
+            >
+                <FontAwesome5 name="shopping-cart" size={24} color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity 
                     title='Logout'
                     onPress={LogOut}
                     style={styles.buttonOut}
@@ -72,8 +98,11 @@ export default function Home({navigation}){
                    
                </View>
                <View style={styles.viewIcon}>
-                   <TouchableOpacity>
-                       <FontAwesome5 name="shopping-cart" size={24} color="black" />
+                   <TouchableOpacity
+                    onPress={adicionar}
+                   >
+                       
+                       <FontAwesome5 name="cart-plus" size={24} color="black" />
                    </TouchableOpacity>
                </View>
            </View>

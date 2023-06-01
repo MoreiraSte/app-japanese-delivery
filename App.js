@@ -11,7 +11,8 @@ import Create from './pages/admin/create'
 import Client from './pages/client/loginClient'
 import ClientRegister from './pages/client/registerClient'
 import Products from './pages/client/index'
-import remove from './pages/admin/remove'
+import Remove from './pages/admin/remove'
+import Confirm from './pages/client/pageConfirm'
 
 const Stack = createNativeStackNavigator();
 
@@ -26,7 +27,8 @@ export default function App() {
         <Stack.Screen name="Client" component={Client} />
         <Stack.Screen name="ClientRegister" component={ClientRegister} options={{headerShown:false}} />
         <Stack.Screen name="Products" component={Products}  options={{headerShown:false}}  />
-        <Stack.Screen name="Remove" component={remove}    />
+        <Stack.Screen name="Remove" component={Remove}    />
+        <Stack.Screen name="Confirm" component={Confirm}    />
       </Stack.Navigator>
     </NavigationContainer>
   );
