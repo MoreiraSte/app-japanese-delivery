@@ -4,6 +4,8 @@ import styles from '../client/style'
 import { getAuth, signOut } from "firebase/auth";
 import { FontAwesome5 } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 
 import { collection, getDocs,addDoc } from 'firebase/firestore'
 import {db,storage} from '../config/firebase';
@@ -16,6 +18,10 @@ export default function Products({navigation}){
     const [name, setName] = useState("")
     const [price, setPrice] = useState()
     const [image, setImage] = useState('')
+
+    function pageIr(){
+        navigation.navigate('Confirm')
+    }
     
     const LogOut = () => {
         signOut(auth).then(() => {
@@ -44,11 +50,11 @@ export default function Products({navigation}){
     const repositorio = 'https://firebasestorage.googleapis.com/v0/b/japanesedelivery-f850b.appspot.com/o/images%2F'
     const media = '?alt=media'
 
-    async function adicionar() {
+    async function adicionar(name, price,image) {
         await addDoc(collection(db, 'cart'), {
           name: name,
           price: price,
-          image: image.name
+          image: image
         })
     
         setName('')
@@ -66,7 +72,7 @@ export default function Products({navigation}){
             <TouchableOpacity
                 title='cartPage'
                 style={styles.buttonOut}
-                
+                onPress={pageIr}
             >
                 <FontAwesome5 name="shopping-cart" size={24} color="black" />
             </TouchableOpacity>
@@ -99,7 +105,9 @@ export default function Products({navigation}){
                </View>
                <View style={styles.viewIcon}>
                    <TouchableOpacity
-                    onPress={adicionar}
+                    onPress={()=>adicionar(
+                        item.name, item.price, item.image
+                    )}
                    >
                        
                        <FontAwesome5 name="cart-plus" size={24} color="black" />

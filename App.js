@@ -13,6 +13,7 @@ import ClientRegister from './pages/client/registerClient'
 import Products from './pages/client/index'
 import Remove from './pages/admin/remove'
 import Confirm from './pages/client/pageConfirm'
+import Adress from './pages/client/pageAdress'
 
 const Stack = createNativeStackNavigator();
 
@@ -29,6 +30,7 @@ export default function App() {
         <Stack.Screen name="Products" component={Products}  options={{headerShown:false}}  />
         <Stack.Screen name="Remove" component={Remove}    />
         <Stack.Screen name="Confirm" component={Confirm}    />
+        <Stack.Screen name="Adress" component={Adress}   />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -9,8 +9,8 @@ const styles = StyleSheet.create({
        
 
     },
-    texto1:{
-        fontSize:40,
+    txt:{
+        fontSize:30,
         fontFamily:'Times New Roman'
     },
     
@@ -19,17 +19,16 @@ const styles = StyleSheet.create({
     },
 
     viewButton:{
-        marginLeft:'70vw',
+        
         flexDirection:'row',
-        top: 0,
-        marginTop:'40px',
-        display:'flex'
+        display:'flex',
+        justifyContent:'space-between'
     },
     scroll:{
         backgroundColor:'#B31E23',
         width:'90vw',
-        height:'80vh',
-        marginTop:'15px'
+        height:'60vh',
+       
 
         
     },
@@ -51,6 +50,40 @@ const styles = StyleSheet.create({
         borderRadius:10,
         width:70,
         height:70,
+    },
+     
+    txtButton: {
+        fontFamily:'Times New Roman',
+        fontSize: 15,
+        color: '#DDD',
+        textAlign:'center',
+        marginTop:'15px'
+    },
+    button:{
+      width: '40vw',
+      height:'6vh',
+      fontSize: 20,
+      borderRadius:20,
+      borderColor:'#B31E23',
+      backgroundColor:'black',
+      
+    },
+    viewConfirm:{
+        backgroundColor:'white',
+        width:'90%',
+        // height:'20%',
+        alignItems:'center',
+        justifyContent:'center',
+        flex:0.8
+    },
+    buttonDiv:{
+    width: '40vw',
+      height:'6vh',
+      fontSize: 20,
+      borderRadius:20,
+      borderColor:'#B31E23',
+      backgroundColor:'black',
+      marginTop:'12px'
     }
    
 })

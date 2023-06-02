@@ -1,27 +1,43 @@
 import React,{useState,useEffect} from 'react';
-import { View, Text, TouchableOpacity,Button, Image } from 'react-native';
+import { View, Text, TouchableOpacity,Button, Image} from 'react-native';
 import styles from '../client/styleConfirm'
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 
-import { collection, getDocs ,query, orderBy, onSnapshot,doc } from 'firebase/firestore'
+import { collection, getDocs,doc, deleteDoc} from 'firebase/firestore'
 import {db} from '../config/firebase';
 
 export default function PageConfirm({navigation}){
     const [data, setData] = useState([]);
+
+    const [page, setPage] = useState([])
+    const [removido,setRemovido] = useState(0)
+
+    function deleteItem(id) {
+        console.log(id)
+        deleteDoc(doc(db, 'cart', id));
+        setRemovido(removido+1)
+    }
+
+    function adressIr(){
+        navigation.navigate('Adress')
+    }
 
     useEffect(() => {
         async function carregar() {
             const querySnapshot = await getDocs(collection(db,'cart'));
             let list=[]
             querySnapshot.forEach((doc)=>{
-                list.push({...doc.data(),id:doc.data().id, name: doc.data().name, image: doc.data().image})
+                console.log(doc._key.path.segments[6])
+                list.push({...doc.data(),id:doc._key.path.segments[6], name: doc.data().name, image: doc.data().image})
             });
     
             setData(list)
         }
         carregar();
-    },[])
+    },[removido])
+
+   
 
 
     const repositorio = 'https://firebasestorage.googleapis.com/v0/b/japanesedelivery-f850b.appspot.com/o/images%2F'
@@ -51,7 +67,7 @@ export default function PageConfirm({navigation}){
                </View>
                <View style={styles.viewIcon}>
                    <TouchableOpacity
-                    onPress={adicionar}
+                    onPress={() => { deleteItem(item.id) }}
                    >
                        
                        <Entypo name="trash" size={24} color="black" />
@@ -62,7 +78,31 @@ export default function PageConfirm({navigation}){
             
         </View>
             
-            
+            <View style={styles.viewConfirm}>
+
+                <Text style={styles.txt}>Total: R$ </Text>
+
+                <View style={styles.viewButton}>
+                <TouchableOpacity
+                 style={styles.button}
+                 onPress={adressIr}
+                >
+                    <Text style={styles.txtButton}>Add Adress</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                 style={styles.button}
+                 
+                >
+                    <Text style={styles.txtButton}>Add Payment</Text>
+                </TouchableOpacity>
+                </View>
+                <TouchableOpacity
+                 style={styles.buttonDiv}
+
+                >
+                    <Text style={styles.txtButton}>Confirm</Text>
+                </TouchableOpacity>
+            </View>
         </View>
             
         
