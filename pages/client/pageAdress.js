@@ -4,10 +4,39 @@ import styles from '../client/styleAdress'
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 
-import { collection, getDocs,doc, deleteDoc} from 'firebase/firestore'
+import { collection, getDocs,doc, deleteDoc,addDoc} from 'firebase/firestore'
 import {db} from '../config/firebase';
 
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
+
 export default function PageConfirm({navigation}){
+
+  const [cidade,setCidade] = useState('')
+  const [bairro,setBairro] = useState('')
+  const [rua,setRua] = useState('')
+  const [numero,setNumero] = useState('')
+  const [cep,setCep] = useState('')
+
+  function adicionar() {
+    addDoc(collection(db, 'Adress'), {
+      cidade: cidade,
+      bairro: bairro,
+      rua: rua,
+      numeroCasa: numero,
+      cep:cep
+    })
+
+    setCidade('')
+    setBairro('')
+    setRua('')
+    setNumero('')
+    setCep('')
+
+    Notify.success('Endereço adicionado!');
+    navigation.navigate('Confirm')
+    
+  }
      
     return(
         
@@ -19,8 +48,8 @@ export default function PageConfirm({navigation}){
                 <View >
                   <TextInput
                     style={styles.input}
-                    // onChangeText={setEmail}
-                    // value={email}
+                    onChangeText={setCidade}
+                    value={cidade}
                     placeholder="City"
                     keyboardType="text"
                   />
@@ -29,8 +58,8 @@ export default function PageConfirm({navigation}){
                     <View >
                   <TextInput
                     style={styles.input}
-                    // onChangeText={setEmail}
-                    // value={email}
+                    onChangeText={setBairro}
+                    value={bairro}
                     placeholder="Neighborhood"
                     keyboardType="text"
                   />
@@ -39,15 +68,15 @@ export default function PageConfirm({navigation}){
                     <View style={styles.viewbtn}>
                   <TextInput
                     style={styles.input}
-                    // onChangeText={setEmail}
-                    // value={email}
+                    onChangeText={setRua}
+                    value={rua}
                     placeholder="Road"
                     keyboardType="text"
                   />
                   <TextInput
                     style={styles.input}
-                    // onChangeText={setEmail}
-                    // value={email}
+                    onChangeText={setNumero}
+                    value={numero}
                     placeholder="House Number"
                     keyboardType="text"
                   />
@@ -56,15 +85,15 @@ export default function PageConfirm({navigation}){
                     <View >
                   <TextInput
                     style={styles.input}
-                    // onChangeText={setEmail}
-                    // value={email}
+                    onChangeText={setCep}
+                    value={cep}
                     placeholder="CEP"
                     keyboardType="text"
                   />
                     </View>
                 <TouchableOpacity
                  style={styles.buttonDiv}
-
+                  onPress={adicionar}
                 >
                     <Text style={styles.txtButton}>Confirm</Text>
                 </TouchableOpacity>

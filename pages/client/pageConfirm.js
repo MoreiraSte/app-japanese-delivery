@@ -22,6 +22,9 @@ export default function PageConfirm({navigation}){
     function adressIr(){
         navigation.navigate('Adress')
     }
+    function paymentIr(){
+        navigation.navigate('Pagar')
+    }
 
     useEffect(() => {
         async function carregar() {
@@ -91,6 +94,7 @@ export default function PageConfirm({navigation}){
                 </TouchableOpacity>
                 <TouchableOpacity
                  style={styles.button}
+                 onPress={paymentIr}
                  
                 >
                     <Text style={styles.txtButton}>Add Payment</Text>
