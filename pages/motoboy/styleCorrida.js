@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
 
     },
     texto1:{
-        fontSize:40,
+        fontSize:30,
         fontFamily:'Times New Roman'
     },
     
@@ -51,6 +51,13 @@ const styles = StyleSheet.create({
         borderRadius:10,
         width:70,
         height:70,
+    },
+    button:{
+        backgroundColor:'black',
+        color:'white',
+        width:'20vw',
+        height:'4vh',
+        borderRadius:10
     }
    
 })

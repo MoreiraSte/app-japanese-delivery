@@ -12,18 +12,24 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 export default function pagePagar({navigation}){
 
-  const [tipoPagamento,setTipoPagamento] = useState('')
+  const [selected, setSelected] = useState('');
+
   const [valor,setValor] = useState('')
  
+  const handleChange = event => {
+    console.log('Label 👉️', event.target.selectedOptions[0].label);
+    console.log(event.target.value);
+    setSelected(event.target.value);
+  };
+
+  
 
   function adicionar() {
     addDoc(collection(db, 'pagamento'), {
-      tipoPagamento: tipoPagamento,
+      tipoPagamento: selected,
       valor: valor,
    
     })
-
-    setTipoPagamento('')
     setValor('')
     
 
@@ -40,11 +46,12 @@ export default function pagePagar({navigation}){
 
                 
                 <View style={styles.selectView} >
-                <select name="cars" style={styles.select}>
-                    <option value="boleto">Boleto</option>
-                    <option value="pix">Pix</option>
-                    <option value="cartao">Cartão</option>
-                </select>  
+                <select value={selected} onChange={handleChange} style={styles.select}>
+                  <option value="">--Tipos--</option>
+                  <option value="pix">Pix</option>
+                  <option value="boleto">Boleto</option>
+                  <option value="cartao">Cartão</option>
+                </select>
 
                 <View style={styles.view} >
                   <TextInput

@@ -36,9 +36,9 @@ export default function App() {
         <Stack.Screen name="Confirm" component={Confirm}    />
         <Stack.Screen name="Adress" component={Adress}  options={{headerShown:false}} />
         <Stack.Screen name="Pagar" component={Pagar}   options={{headerShown:false}}/>
-        <Stack.Screen name="MotoboyLogin" component={MotoboyLogin}/>
-        <Stack.Screen name="MotoboyRegister" component={MotoboyRegister} options={{headerShown:false}} />
-        <Stack.Screen name="MotoboyCorrida" component={MotoboyCorrida}  />
+        <Stack.Screen name="MotoboyLogin" component={MotoboyLogin} options={{headerShown:false}}/>
+        <Stack.Screen name="MotoboyRegister" component={MotoboyRegister} />
+        <Stack.Screen name="MotoboyCorrida" component={MotoboyCorrida} options={{headerShown:false}} />
       </Stack.Navigator>
     </NavigationContainer>
   );

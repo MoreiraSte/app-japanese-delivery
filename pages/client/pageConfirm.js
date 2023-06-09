@@ -13,6 +13,8 @@ export default function PageConfirm({navigation}){
     const [page, setPage] = useState([])
     const [removido,setRemovido] = useState(0)
 
+    const [total,setTotal] = useState(0)
+
     function deleteItem(id) {
         console.log(id)
         deleteDoc(doc(db, 'cart', id));
@@ -30,11 +32,13 @@ export default function PageConfirm({navigation}){
         async function carregar() {
             const querySnapshot = await getDocs(collection(db,'cart'));
             let list=[]
+            let valor = 0
             querySnapshot.forEach((doc)=>{
+                valor += parseFloat(doc.data().price);
                 console.log(doc._key.path.segments[6])
                 list.push({...doc.data(),id:doc._key.path.segments[6], name: doc.data().name, image: doc.data().image})
             });
-    
+            setTotal(valor)
             setData(list)
         }
         carregar();
@@ -83,7 +87,7 @@ export default function PageConfirm({navigation}){
             
             <View style={styles.viewConfirm}>
 
-                <Text style={styles.txt}>Total: R$ </Text>
+                <Text style={styles.txt}>Total: R$ {total} </Text>
 
                 <View style={styles.viewButton}>
                 <TouchableOpacity

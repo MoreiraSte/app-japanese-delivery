@@ -19,8 +19,8 @@ export default function MotoboyLogin({navigation}) {
     .then((res)=> {
       console.log(res)
       if (res != false){
-        Notify.success('Usuário logado!'),
-        navigation.navigate('Products')
+        Notify.success('Motoboy logado!'),
+        navigation.navigate('MotoboyCorrida')
       }
 
       }

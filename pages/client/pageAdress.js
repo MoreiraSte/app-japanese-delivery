@@ -18,13 +18,15 @@ export default function PageConfirm({navigation}){
   const [numero,setNumero] = useState('')
   const [cep,setCep] = useState('')
 
+
+
   function adicionar() {
-    addDoc(collection(db, 'Adress'), {
-      cidade: cidade,
+     addDoc(collection(db, 'Adress'), {
       bairro: bairro,
-      rua: rua,
+      cep:cep,
+      cidade: cidade,
       numeroCasa: numero,
-      cep:cep
+      rua: rua,
     })
 
     setCidade('')

@@ -39,8 +39,8 @@ export default function Home({navigation}){
              </View>
             <View >
             <TouchableOpacity 
-                    title='Login'
-                    onPress={()=> navigation.navigate('Login')}
+                    title='Motoboy'
+                    onPress={()=> navigation.navigate('MotoboyRegister')}
                     style={styles.button}
                 >
                     <Text style={styles.txtButton}>Motoboy</Text>
