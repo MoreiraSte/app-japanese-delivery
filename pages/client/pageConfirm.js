@@ -27,6 +27,10 @@ export default function PageConfirm({navigation}){
     function paymentIr(){
         navigation.navigate('Pagar')
     }
+    function maps(){
+        navigation.navigate('MotoboyMaps')
+
+    }
 
     useEffect(() => {
         async function carregar() {
@@ -106,7 +110,7 @@ export default function PageConfirm({navigation}){
                 </View>
                 <TouchableOpacity
                  style={styles.buttonDiv}
-
+                 onPress={maps}
                 >
                     <Text style={styles.txtButton}>Confirm</Text>
                 </TouchableOpacity>

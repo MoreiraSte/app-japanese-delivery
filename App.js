@@ -18,6 +18,7 @@ import Pagar from './pages/client/pagePagar'
 import MotoboyRegister from './pages/motoboy/pageRegister'
 import MotoboyLogin from './pages/motoboy/pageLogin'
 import MotoboyCorrida from './pages/motoboy/pageCorrida'
+import MotoboyMaps from './pages/motoboy/mapsRoutes'
 
 const Stack = createNativeStackNavigator();
 
@@ -39,6 +40,7 @@ export default function App() {
         <Stack.Screen name="MotoboyLogin" component={MotoboyLogin} options={{headerShown:false}}/>
         <Stack.Screen name="MotoboyRegister" component={MotoboyRegister} />
         <Stack.Screen name="MotoboyCorrida" component={MotoboyCorrida} options={{headerShown:false}} />
+        <Stack.Screen name="MotoboyMaps" component={MotoboyMaps} />
       </Stack.Navigator>
     </NavigationContainer>
   );

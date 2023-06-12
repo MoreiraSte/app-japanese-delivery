@@ -40,6 +40,11 @@ export default function Corrida({navigation}) {
         carregar();
     },[])
 
+    function maps(){
+        navigation.navigate('MotoboyMaps')
+
+    }
+
 
     return(
         
@@ -75,6 +80,7 @@ export default function Corrida({navigation}) {
                <View style={styles.viewIcon}>
                    <TouchableOpacity
                       style={styles.button}
+                      onPress={maps}
                    >
                        
                        <Text  style={{color:'white',marginTop:'5px',marginLeft:'10px'}}>Entregar</Text>
