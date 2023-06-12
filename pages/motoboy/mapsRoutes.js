@@ -12,7 +12,7 @@ import {
 import {styles} from './stylesMapsRoutes';
 
 export default function Map(){
-    const[location,setLocation] = useState<LocationObject | null>(null);
+    const[location,setLocation] = useState <LocationObject | null>(null);
 
     const mapRef = useRef<MapView>(null);
 
