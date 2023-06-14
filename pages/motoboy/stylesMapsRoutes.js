@@ -1,14 +1,21 @@
 import { StyleSheet } from "react-native";
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
     container:{
-        flex:1,
-        backgroundColor:'fff',
-        alignItems:'center',
-        justifyContent:'center'
+        flex: 1,
+        backgroundColor:'#FFA696',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+       
+
     },
-    map:{
-        flex:1,
-        width:'100%'
-    }
+    viewButton:{
+        marginLeft:'70vw',
+        flexDirection:'row',
+        top: 0,
+        marginTop:'40px',
+        display:'flex'
+    },
 })
+
+export default styles

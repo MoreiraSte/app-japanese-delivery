@@ -1,73 +1,46 @@
-import {useEffect, useState, useRef} from 'react';
-import {View} from 'react-native';
-import MapView ,{Marker} from 'react-native-maps';
-import {
-    requestForegroundPermissionsAsync,
-    getCurrentPositionAsync,
-    LocationObject,
-    watchPositionAsync,
-    LocationAccuracy,
-} from 'expo-location';
+import React from 'react';
+import { View, Text, TouchableOpacity,Button } from 'react-native';
+import styles from './stylesMapsRoutes.js'
+import Iframe from 'react-iframe'
 
-import {styles} from './stylesMapsRoutes';
+import { getAuth, signOut } from "firebase/auth";
+import { AntDesign } from '@expo/vector-icons';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-export default function Map(){
-    const[location,setLocation] = useState <LocationObject | null>(null);
+export default function MotoboyMaps({navigation}){
+    const auth = getAuth();
 
-    const mapRef = useRef<MapView>(null);
+    const LogOut = () => {
+        signOut(auth).then(() => {
+            navigation.navigate('Home')
+           
 
-    async function requestForegroundPermissions(){
-        const {granted} = await requestForegroundPermissionsAsync();
-
-        if (granted){
-            const currentPosition = await getCurrentPositionAsync();
-            setLocation(currentPosition);
-
-            console.log("LOCALIZAÇÃO ATUAL =>",currentPosition);
-        }
+            
+        }).catch((error) => {
+            console.log('ERRO AO SAIR')
+        });
     }
-    
-    useEffect(()=>{
-        requestForegroundPermissions();
-    },[]);
-
-    useEffect(()=>{
-        watchPositionAsync({
-            accuracy:LocationAccuracy.Highest,
-            timeInterval:1000,
-            distanceInterval:1
-        },(response) => {
-            console.log("Nova localização! =>",response);
-            setLocation(response);
-            mapRef.current?.animateCamera({
-                pitch: 70,
-                center: response.coords
-            })
-        })
-    },[])
 
     return(
+        
         <View style={styles.container}>
-            {
-                location &&
-            <MapView
-                ref={mapRef}
-                style={styles.map}
-                initialRegion={{
-                    latitude:location.coords.latitude,
-                    longitude:location.coords.longitude,
-                    latitudeDelta:0.005,
-                    longitudeDelta:0.005
-                }}
+            <View  style={styles.viewButton} >
+        
+       
+        <TouchableOpacity 
+                title='Logout'
+                onPress={LogOut}
+                style={styles.buttonOut}
             >
-                <Marker
-                    coordinate={{
-                        latitude:location.coords.latitude,
-                        longitude:location.coords.longitude,
-                    }}
-                />
-            </MapView>
-            }
+                <AntDesign name="logout" size={25} color="black" />
+            </TouchableOpacity>
+    </View>
+            <Iframe  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3676.1549469870697!2d-47.206985712805945!3d-22.870733883146084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8b9553ea07cf9%3A0xf84dd50d877b5195!2sTemakeria.com%20Hortol%C3%A2ndia!5e0!3m2!1spt-BR!2sbr!4v1686742597056!5m2!1spt-BR!2sbr" 
+            width="370" height="750" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"/>
         </View>
-    );
+    )
 }
+
+
+
+

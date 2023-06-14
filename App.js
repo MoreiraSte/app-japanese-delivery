@@ -40,7 +40,7 @@ export default function App() {
         <Stack.Screen name="MotoboyLogin" component={MotoboyLogin} options={{headerShown:false}}/>
         <Stack.Screen name="MotoboyRegister" component={MotoboyRegister} />
         <Stack.Screen name="MotoboyCorrida" component={MotoboyCorrida} options={{headerShown:false}} />
-        <Stack.Screen name="MotoboyMaps" component={MotoboyMaps} />
+        <Stack.Screen name="MotoboyMaps" component={MotoboyMaps} options={{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
